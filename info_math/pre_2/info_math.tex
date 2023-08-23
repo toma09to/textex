@@ -1,0 +1,648 @@
+\documentclass[a4paper,12pt]{ltjsarticle}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{mathtools}
+
+\title{情報数学前期期末試験直前演習問題}
+\author{toma09to}
+\date{}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+\setcounter{section}{-1}
+\maketitle
+
+間違い等ありましたら，連絡してください．
+
+本資料を参考にしたことによって生じた損害について，当方は一切の責任を負いません．
+
+\section{連続する2つの整数の積は偶数である．}
+\begin{proof}
+    2整数の小さい方を$n$とする． \\
+    $2 \mid n$のとき，$n = 2k$として，
+    \begin{align*}
+        n(n+1) &= n^2 + n \\
+               &= (2k)^2 + 2k \\
+               &= 4k^2 + 2k \\
+               &= 2(2k^2 + k)
+    \end{align*}
+    $2 \nmid n$のとき，$n = 2k + 1$として，
+    \begin{align*}
+        n(n+1) &= n^2 + n \\
+               &= (2k + 1)^2 + (2k + 1) \\
+               &= 4k^2 + 6k + 2 \\
+               &= 2(2k^2 + 3k + 1)
+    \end{align*}
+\end{proof}
+
+\section{$n \in \Z$のとき，$n^3 - n$は偶数であることを証明せよ．}
+\begin{proof}
+    $2 \mid n$のとき，$n = 2k$として，
+    \begin{align*}
+        n^3 - n &= n(n + 1)(n - 1) \\
+                &= 2k(2k + 1)(2k - 1)
+    \end{align*}
+    $2 \nmid n$のとき，$n = 2k + 1$として，
+    \begin{align*}
+        n^3 - n &= n(n + 1)(n - 1) \\
+                &= 2k(2k + 1)(2k + 2)
+    \end{align*}
+\end{proof}
+
+\section{$x,y \in \Z$とする．$xy$および$x + y$が偶数であるとき，$x$と$y$の両方とも偶数であることを証明せよ．}
+\begin{proof}
+    $xy = 2k$，$x + y = 2l$とすると，$y = 2l - x$ \\
+    これを$xy$に代入して，
+    \begin{align*}
+        xy &= x(2l - x) \\
+           &= 2lx - x^2 \\
+        \therefore x^2 &= 2lx - 2k = 2(lx - k)
+    \end{align*}
+    ここで，$2 \mid x^2 \Rightarrow 2 \mid x$を証明する．\\
+    この対偶は，$2 \nmid x \Rightarrow 2 \nmid x^2$ \\
+    $x = 2m + 1$として，
+    \begin{equation*}
+        x^2 = (2m + 1)^2 = 4m^2 + 4m + 1 = 2(2m^2 + 2m) + 1
+    \end{equation*}
+    したがって，$x$は偶数で，$x = 2n$とおくと，
+    \begin{equation*}
+        y = 2l - x = 2l - 2n = 2(l - n)
+    \end{equation*}
+    よって，$y$も偶数．
+\end{proof}
+
+\section{整数$a$，$b$，$c$について，$a + b, b + c, c + a$の少なくとも一つは偶数であることを示せ．}
+\begin{proof}
+    $a + b$，$b + c$，$c + a$が全て奇数であると仮定し，
+    \begin{align*}
+        a + b &= 2k + 1 \\
+        b + c &= 2l + 1 \\
+        c + a &= 2m + 1
+    \end{align*}
+    とおく．
+    このとき，
+    \begin{align*}
+        (a + b) + (b + c) &= (2k + 1) + (2l + 1) \\
+        a + 2b + c &= 2k + 2l + 2 \\
+        c + a &= 2k + 2l - 2b + 2 = 2(k + l - b + 1)
+    \end{align*}
+    これは，$c + a$が奇数であることと矛盾．
+\end{proof}
+
+\section{$x$を正の実数とする．$x - \frac{2}{x} > 1$のとき$x > 2$であることを(a)直接証明(b)対偶による証明(c)背理法による証明により証明せよ．}
+\begin{enumerate}[(a)]
+    \item
+        \begin{proof}[直接証明]
+            \begin{equation*}
+                x - \frac{2}{x} > 1
+            \end{equation*}
+            両辺にxを掛けて，
+            \begin{gather*}
+                x^2 - 2 > x \\
+                x^2 - x - 2 > 0 \\
+                (x - 2)(x + 1) > 0
+            \end{gather*}
+            両辺をx + 1で割って，
+            \begin{gather*}
+                x - 2 > 0 \\
+                x > 2
+            \end{gather*}
+        \end{proof}
+    \item
+        \begin{proof}[対偶による証明]
+            対偶は，「$x \leq 2 \Rightarrow x - \frac{2}{x} \leq 1$」 \\
+            $2 \geq x$の両辺を$-x$で割って，
+            \begin{equation*}
+                -\frac{2}{x} \leq -1
+            \end{equation*}
+            $x \leq 2$であるから両辺に$x$を足して，
+            \begin{equation*}
+                x - \frac{2}{x} \leq x - 1 \leq 2 - 1 = 1
+            \end{equation*}
+        \end{proof}
+    \item
+        \begin{proof}[背理法による証明]
+            $x - \frac{2}{x} > 1$かつ$x \leq 2$と仮定する． \\
+            $x \leq 2$より(b)と同様の変形をして，
+            \begin{equation*}
+                x - \frac{2}{x} \leq 1
+            \end{equation*}
+            を得る．これは，$x - \frac{2}{x} > 1$と矛盾．
+        \end{proof}
+\end{enumerate}
+
+\section{次の命題を証明せよ．$n,m \in \Z$とする．}
+\begin{enumerate}[(1)]
+    \item $3 \mid m$ならば$3 \mid m^2$
+        \begin{proof}
+            $m = 3k$として，
+            \begin{equation*}
+                m^2 = (3k)^2 = 9k^2 = 3(3k^2)
+            \end{equation*}
+        \end{proof}
+    \item $3 \mid m^2$ならば$3 \mid m$
+        \begin{proof}
+            対偶は，「$3 \nmid m \Rightarrow 3 \nmid m^2$」 \\
+            \begin{enumerate}[(I)]
+                \item $m = 3k + 1$のとき
+                    \begin{equation*}
+                        m^2 = (3k + 1)^2 = 9k^2 + 6k + 1 = 3(3k^2 + 2k) + 1
+                    \end{equation*}
+                \item $m = 3k + 2$のとき
+                    \begin{equation*}
+                        m^2 = (3k + 2)^2 = 9k^2 + 12k + 4 = 3(3k^2 + 4k + 1) + 1
+                    \end{equation*}
+            \end{enumerate}
+        \end{proof}
+    \item $3n^2 \mid m^2$ならば$3 \mid m$
+        \begin{proof}
+            $3n^2 \mid m^2$より，$3 \mid m^2$ \\
+            (2)より，$3 \mid m^2 \Rightarrow 3 \mid m$
+        \end{proof}
+    \item $3n^2 = m^2$ならば$3 \mid n$
+        \begin{proof}
+            $3n^2 = m^2$より，$3 \mid m^2$ \\
+            (2)より，$3 \mid m$であるから，$m = 3k$とおいて，
+            \begin{align*}
+                (3k)^2 &= 3n^2 \\
+                3k^2 &= n^2
+            \end{align*}
+            したがって，$3 \mid n^2$すなわち$3 \mid n$
+        \end{proof}
+    \item $3n^2 = m^2$ならば$n$と$m$は1以外の公約数を持つ．
+        \begin{proof}
+            (2)，(4)より，$3 \mid m$かつ$3 \mid n$ \\
+            よって，$n$と$m$は3を公約数に持つ．
+        \end{proof}
+    \item $\sqrt{3}$は無理数である．
+        \begin{proof}
+            $\sqrt{3}$が有理数であると仮定する． \\
+            すると，$p,q \in \Z$を用いて，
+            \begin{equation*}
+                \sqrt{3} = \frac{q}{p} \quad (\frac{q}{p}は既約分数)
+            \end{equation*}
+            両辺を2乗して変形すると，
+            \begin{equation*}
+                3q^2 = p^2
+            \end{equation*}
+            (5)より，$p$と$q$は1以外の公約数を持つ．これは，$\frac{q}{p}$が既約分数であることと矛盾．
+        \end{proof}
+\end{enumerate}
+
+\section{以下の問題に答えよ．}
+\begin{enumerate}[(1)]
+    \item $a$を実数とする．次の\square に適切な記号を一文字入れよ（証明不要）． \\
+        逆数をとっても符号は変わらない．
+        \begin{align*}
+            a > 0 &\Leftrightarrow \frac{1}{a} > 0 \\
+            a < 0 &\Leftrightarrow \frac{1}{a} < 0
+        \end{align*}
+    \item $a,b$を実数とする．次の\square に適切な文字列を入れよ（証明不要）． \\
+        $ab > 0$なのは，$a > 0 \land b > 0$または$a < 0 \land b < 0$のときである．
+        \begin{equation*}
+            ab > 0 \Leftrightarrow a と b の符号は同じ
+        \end{equation*}
+    \item 上の結果を用いて「$\frac{1}{r(1 - r)}が4以上の実数 \Rightarrow 0 < r < 1$」を示せ．
+        \begin{proof}
+            \begin{equation*}
+                \frac{1}{r(1 - r)} = \frac{1}{r} \times \frac{1}{1 - r} > 0
+            \end{equation*}
+            となるのは，$\frac{1}{r}$と$\frac{1}{1 - r}$の符号すなわち$r$と$1 - r$の符号が同じとき．
+            \begin{enumerate}[(I)]
+                \item $r > 0$かつ$1 - r > 0$のとき \\
+                    これらを同時に満たすのは$0 < r < 1$のとき．
+                \item $r < 0$かつ$1 - r < 0$のとき \\
+                    これらを同時に満たす$r$は存在しない．
+            \end{enumerate}
+            よって
+            \begin{equation*}
+                \frac{1}{r(1 - r)} > 0 \Rightarrow 0 < r < 1
+            \end{equation*}
+            であるから，
+            \begin{equation*}
+                \frac{1}{r(1 - r)} \geq 4 \Rightarrow 0 < r < 1
+            \end{equation*}
+            も成り立つ．
+        \end{proof}
+\end{enumerate}
+
+\section{整数を（正の）整数で割ると，商と余りが必ず一つずつ存在する．これを前提として以下の問いに答えよ．}
+\begin{enumerate}[(1)]
+    \item 0でない整数$a$と$b$に対して，
+        \begin{equation*}
+            I_{a,b} \coloneqq \{ ax + by \mid x,y \in \Z \}
+        \end{equation*}
+        とおくことにすると
+        \begin{gather*}
+            w \in \Z, z \in I_{a,b} \Rightarrow wz \in I_{a,b}, \\
+            z_1, z_2 \in I_{a,b} \Rightarrow z_1 + z_2 \in I_{a,b}
+        \end{gather*}
+        が成り立つことを示せ．
+        \begin{proof}
+            $z = ax + by$とおくと，
+            \begin{equation*}
+                wz = w(ax + by) = a(wx) + b(wy) \in I_{a,b}
+            \end{equation*}
+            また，$z_1 = ax_1 + by_1, z_2 = ax_2 + by_2$とおくと，
+            \begin{equation*}
+                z_1 + z_2 = ax_1 + by_1 + ay_2 + by_2 = a(x_1 + x_2) + b(y_1 + y_2) \in I_{a,b}
+            \end{equation*}
+        \end{proof}
+    \item $\{ z \in I_{a,b} \mid z > 0 \}$を考える．この集合が空集合でないことを示せ．
+        \begin{proof}
+            $z = ax + by$とおいて，$x = a, y = b$のとき
+            \begin{equation*}
+                z = a \times a + b \times b = a^2 + b^2 > 0
+            \end{equation*}
+            したがって，要素が1つ以上存在するため空集合ではない．
+        \end{proof}
+    \item $d \coloneqq min\{ z \in I_{a,b} \mid z > 0 \}$とおく．以下の命題を示せ．
+        \begin{enumerate}
+            \item[(3-1)] $c \in I_{a,b}$として，$r = c \% d$とすると$r \in I_{a,b}$となる．
+                \begin{proof}
+                    $c = ax_c + by_c$，$d = ax_d + by_d$とおく． \\
+                    $r = c \% d$より，$n \in \Z$を用いて
+                    \begin{align*}
+                        c &= nd + r \\
+                        r &= c - nd \\
+                          &= (ax_c + by_c) - n(ax_d + by_d) \\
+                          &= a(x_c - nx_d) + b(y_c - ny_d)
+                    \end{align*}
+                    よって，$r \in I_{a,b}$
+                \end{proof}
+            \item[(3-2)] $d$は$a$と$b$の公約数である．
+                \begin{proof}
+                    $r = c \% d$より，$0 \leq r < d$ \\
+                    ここで，$r > 0$であると仮定すると，(3-1)より$r \in I_{a,b}$ \\
+                    しかし，これは$d = min\{ z \in I_{a,b} \mid z > 0 \}$と矛盾． \\
+                    よって$r = 0$．ゆえに$n \in \Z$を用いて
+                    \begin{equation*}
+                        c = nd
+                    \end{equation*}
+                    ここで，
+                    \begin{gather*}
+                        a = a \times 1 + b \times 0 \\
+                        b = a \times 0 + b \times 1
+                    \end{gather*}
+                    より$a,b \in I_{a,b}$．これより$n,m \in \Z$を用いて
+                    \begin{gather*}
+                        a = nd \\
+                        b = md
+                    \end{gather*}
+                    すなわち$d \mid a$，$d \mid b$． \\
+                    以上より，$d$は$a$と$b$の公約数である．
+                \end{proof}
+        \end{enumerate}
+\end{enumerate}
+
+\section{$n:整数$とする．次を示せ．}
+\begin{enumerate}[(1)]
+    \item $7n + 4 : 偶数 \Leftrightarrow 3n - 11 : 奇数$
+        \begin{proof}
+            \quad \\
+            \begin{itemize}
+                \item $2 \mid (7n + 4) \Rightarrow 2 \nmid (3n - 11)$ \\
+                    $7n + 4 = 2k$とおくと
+                    \begin{equation*}
+                        3n - 11 = 2k - 4n - 15 = 2(k - 2n - 8) + 1
+                    \end{equation*}
+                \item $2 \mid (7n + 4) \Leftarrow 2 \nmid (3n - 11)$ \\
+                    $3n - 11 = 2l + 1$とおくと
+                    \begin{equation*}
+                        7n + 4 = 2l + 4n + 16 = 2(l + 2n + 8)
+                    \end{equation*}
+            \end{itemize}
+            以上より$2 \mid (7n + 4) \Leftrightarrow 2 \nmid (3n - 11)$
+        \end{proof}
+    \item $5n^2 : 偶数 \Leftrightarrow 3n^3 : 偶数$
+        \begin{proof}
+            \quad \\
+            \begin{itemize}
+                \item $2 \mid 5n^2 \Rightarrow 2 \mid 3n^3$ \\
+                    $5n^2 = 2k$とおくと
+                    \begin{equation*}
+                        3n^3 = n(5n^2 - 2n^2) = n(2k - 2n^2) = 2n(k - n^2)
+                    \end{equation*}
+                \item $2 \mid 5n^2 \Leftarrow 2 \mid 3n^3$ \\
+                    $2 \mid 3n^3 \Rightarrow 2 \mid n$を証明する． \\
+                    対偶は「$2 \nmid n \Rightarrow 2 \nmid 3n^3$」．$n = 2l + 1$とおいて
+                    \begin{equation*}
+                        3n^3 = 3(2l + 1)^3 = 3(8l^3 + 12l^2 + 6l + 1) = 2(12l^3 + 18l^2 + 9l + 1) + 1
+                    \end{equation*}
+                    次に，$2 \mid n \Rightarrow 2 \mid 5n^2$を証明する． \\
+                    $n = 2m$とおいて
+                    \begin{equation*}
+                        5n^2 = 5(2m)^2 = 2(10m^2)
+                    \end{equation*}
+            \end{itemize}
+            以上より$2 \mid 5n^2 \Leftrightarrow 2 \mid 3n^3$
+        \end{proof}
+    \item $n^2 - 3n  + 1$は奇数
+        \begin{proof}
+            $2 \mid n$のとき$n = 2k$とおいて
+            \begin{equation*}
+                n^2 - 3n + 1 = (2k)^2 - 3(2k) + 1 = 4k^2 - 6k + 1 = 2(2k^2 - 3k) + 1
+            \end{equation*}
+            $2 \nmid n$のとき$n = 2k + 1$とおいて
+            \begin{equation*}
+                n^2 - 3n + 1 = (2k + 1)^2 - 3(2k + 1) + 1 = 4k^2 - 2k - 1 = 2(2k^2 - k - 1) + 1
+            \end{equation*}
+        \end{proof}
+    \item $n + m : 偶数 \Leftrightarrow nとmは同パリティを持つ$
+        \begin{proof}
+            \quad \\
+            \begin{itemize}
+                \item $2 \mid (n + m) \Rightarrow nとmは同パリティを持つ$ \\
+                    対偶は「$nとmは逆パリティを持つ \Rightarrow 2 \nmid (n + m)$」
+                    \begin{enumerate}[(I)]
+                        \item $2 \mid n, 2 \nmid m$のとき$n = 2k, m = 2l + 1$とおいて
+                            \begin{equation*}
+                                n + m = 2k + 2l + 1 = 2(k + l) + 1
+                            \end{equation*}
+                        \item $2 \nmid n, 2 \mid m$のとき$n = 2k + 1, m = 2l$とおいて
+                            \begin{equation*}
+                                n + m = 2k + 2l + 1 = 2(k + l) + 1
+                            \end{equation*}
+                    \end{enumerate}
+                \item $2 \mid (n + m) \Leftarrow nとmは同パリティを持つ$ \\
+                    \begin{enumerate}[(I)]
+                        \item $2 \mid n, 2 \mid m$のとき$n = 2k, m = 2l$とおいて
+                            \begin{equation*}
+                                n + m = 2k + 2l = 2(k + l)
+                            \end{equation*}
+                        \item $2 \nmid n, 2 \nmid m$のとき$n = 2k + 1, m = 2l + 1$とおいて
+                            \begin{equation*}
+                                n + m = 2k + 2l + 2 = 2(k + l + 1)
+                            \end{equation*}
+                    \end{enumerate}
+            \end{itemize}
+            以上より$2 \mid (n + m) \Leftrightarrow nとmは同パリティを持つ$
+        \end{proof}
+    \item $3n + 5m : 偶数 \Leftrightarrow nとmは同パリティを持つ$
+        \begin{proof}
+            \quad \\
+            \begin{itemize}
+                \item $2 \mid (3n + 5m) \Rightarrow nとmは同パリティを持つ$ \\
+                    対偶は「$nとmは逆パリティを持つ \Rightarrow 2 \nmid (3n + 5m)$」
+                    \begin{enumerate}[(I)]
+                        \item $2 \mid n, 2 \nmid m$のとき$n = 2k, m = 2l + 1$とおいて
+                            \begin{equation*}
+                                3n + 5m = 3(2k) + 5(2l + 1) = 6k + 10l + 5 = 2(3k + 5l + 2) + 1
+                            \end{equation*}
+                        \item $2 \nmid n, 2 \mid m$のとき$n = 2k + 1, m = 2l$とおいて
+                            \begin{equation*}
+                                3n + 5m = 3(2k + 1) + 5(2l) = 6k + 10l + 3 = 2(3k + 5l + 1) + 1
+                            \end{equation*}
+                    \end{enumerate}
+                \item $2 \mid (3n + 5m) \Leftarrow nとmは同パリティを持つ$ \\
+                    \begin{enumerate}[(I)]
+                        \item $2 \mid n, 2 \mid m$のとき$n = 2k, m = 2l$とおいて
+                            \begin{equation*}
+                                3n + 5m = 3(2k) + 5(2l) = 6k + 10l = 2(3k + 5l)
+                            \end{equation*}
+                        \item $2 \nmid n, 2 \nmid m$のとき$n = 2k + 1, m = 2l + 1$とおいて
+                            \begin{equation*}
+                                3n + 5m = 3(2k + 1) + 5(2l + 1) = 6k + 10l + 8 = 2(3k + 5l + 4)
+                            \end{equation*}
+                    \end{enumerate}
+            \end{itemize}
+            以上より$2 \mid (3n + 5m) \Leftrightarrow nとmは同パリティを持つ$
+        \end{proof}
+    \item $3n + 1$と$5n + 2$は逆パリティを持つ
+        \begin{proof}
+            \begin{equation*}
+                (3n + 1) + (5n + 2) = 8n + 3 = 2(4n + 1) + 1
+            \end{equation*}
+            (4)より，$2 \nmid (n + m) \Leftrightarrow nとmは逆パリティを持つ$が成り立つ． \\
+            したがって，$3n + 1$と$5n + 2$は逆パリティを持つ．
+        \end{proof}
+\end{enumerate}
+
+\section{次の式を示せ．但し，$\Z$はすべての整数からなる集合，$\R$はすべての実数からなる集合とする．}
+\begin{enumerate}[(1)]
+    \item $\{ 3n \mid n \in \Z \} = \{ 6m + 9n \mid n,m \in \Z \}$
+        \begin{proof}
+            \quad \\
+            \begin{itemize}
+                \item $\{ 3n \mid n \in \Z \} \subseteq \{ 6m + 9n \mid n,m \in \Z \}$
+                    \begin{equation}
+                        3n = -6n + 9n = 6(-n) + 9n
+                    \end{equation}
+                \item $\{ 3n \mid n \in \Z \} \supseteq \{ 6m + 9n \mid n,m \in \Z \}$
+                    \begin{equation}
+                        6m + 9n = 3(2m + 3n)
+                    \end{equation}
+            \end{itemize}
+            以上より$\{ 3n \mid n \in \Z \} = \{ 6m + 9n \mid n,m \in \Z \}$
+        \end{proof}
+    \item $\{ x \in \R \mid x^2 - 3x + 2 \leq 0 \} = \{ x \in \R \mid 1 \leq x \leq 2 \}$
+        \begin{proof}
+            \quad \\
+            \begin{itemize}
+                \item $\{ x \in \R \mid x^2 - 3x + 2 \leq 0 \} \subseteq \{ x \in \R \mid 1 \leq x \leq 2 \}$
+                    \begin{align*}
+                        x^2 - 3x + 2 &\leq 0 \\
+                        (x - 1)(x - 2) &\leq 0 \\
+                        \therefore 1 \leq x &\leq 2
+                    \end{align*}
+                \item $\{ x \in \R \mid x^2 - 3x + 2 \leq 0 \} \supseteq \{ x \in \R \mid 1 \leq x \leq 2 \}$ \\
+                    $x \geq 1, x \leq 2$より$x - 1 \geq 0, x - 2 \leq 0$
+                    \begin{align*}
+                        \therefore (x - 1)(x - 2) &\leq 0 \\
+                        x^2 - 3x + 2 &\leq 0
+                    \end{align*}
+            \end{itemize}
+        \end{proof}
+    \item $\{ n \in \Z \mid n \geq 20 \} \subseteq \{ 5n + 6m | n,m \in \Z, n \geq 0, m \geq 0 \}$
+        \begin{proof}
+            0以上の整数$k$を用いて，左の集合の要素$n$は$n = 20 + k$と表される．
+            \begin{enumerate}[(I)]
+                \item $k = 5l$のとき
+                    \begin{equation*}
+                        n = 20 + 5l = 5 \times (l + 4) + 6 \times 0
+                    \end{equation*}
+                \item $k = 5l + 1$のとき
+                    \begin{equation*}
+                        n = 21 + 5l = 5 \times (l + 3) + 6 \times 1
+                    \end{equation*}
+                \item $k = 5l + 2$のとき
+                    \begin{equation*}
+                        n = 22 + 5l = 5 \times (l + 2) + 6 \times 2
+                    \end{equation*}
+                \item $k = 5l + 3$のとき
+                    \begin{equation*}
+                        n = 23 + 5l = 5 \times (l + 1) + 6 \times 3
+                    \end{equation*}
+                \item $k = 5l + 4$のとき
+                    \begin{equation*}
+                        n = 24 + 5l = 5 \times l + 6 \times 4
+                    \end{equation*}
+            \end{enumerate}
+            よって$\{ n \in \Z \mid n \geq 20 \} \subseteq \{ 5n + 6m | n,m \in \Z, n \geq 0, m \geq 0 \}$
+        \end{proof}
+\end{enumerate}
+
+\section{背理法を用いて次を示せ}
+\begin{enumerate}[(1)]
+    \item $nが0より大きな整数 \Rightarrow 2n < n^2 < 3n$とはならない．
+        \begin{proof}
+            $n > 0$かつ$2n < n^2 < 3n$とする． \\
+            $n > 0$であるから，各辺を$n$で割って，
+            \begin{equation*}
+                2 < n < 3
+            \end{equation*}
+            これを満たす整数$n$は存在しない．
+        \end{proof}
+    \item $\{ x \in \R \mid x \neq 0, x + \frac{1}{x} < 2 \} = \{ x \in \R \mid x < 0\}$
+        \begin{proof}
+            \quad \\
+            \begin{itemize}
+                \item $\{ x \in \R \mid x \neq 0, x + \frac{1}{x} < 2 \} \subseteq \{ x \in \R \mid x < 0\}$ \\
+                    $x + \frac{1}{x} < 2$かつ$x \geq 0$と仮定する． \\
+                    $x + \frac{1}{x} < 2$の両辺に$x$を掛けて
+                    \begin{gather*}
+                        x^2 + 1 < 2x \\
+                        x^2 - 2x + 1 < 0 \\
+                        (x - 1)^2 < 0
+                    \end{gather*}
+                    これを満たす$x$は存在せず，$x \geq 0$と矛盾．
+                \item $\{ x \in \R \mid x \neq 0, x + \frac{1}{x} < 2 \} \supseteq \{ x \in \R \mid x < 0\}$
+                    $x < 0$かつ$x + \frac{1}{x} \geq 2$と仮定する． \\
+                    $x < 0$の両辺に$(x - 1)^2$を掛けて
+                    \begin{gather*}
+                        x(x - 1)^2 < 0 \\
+                        x(x^2 - 2x + 1) < 0 \\
+                        x^3 - 2x^2 + x < 0 \\
+                        x^3 + x < 2x^2
+                    \end{gather*}
+                    両辺を$x^2$で割って
+                    \begin{equation*}
+                        x + \frac{1}{x} < 2
+                    \end{equation*}
+                    これは$x + \frac{1}{x} \geq 2$と矛盾．
+            \end{itemize}
+        \end{proof}
+    \item $\{ n \in \Z \mid 5n^2は偶数 \} = \{ n \in \Z \mid 3n^3は偶数 \}$
+        \begin{proof}
+            \quad \\
+            \begin{itemize}
+                \item $n \in (左) \Rightarrow n \in (右)$を示す．
+                    $2 \mid 5n^2 \Rightarrow 2 \mid 3n^3$を証明する． \\
+                    $5n^2 = 2k$とおくと
+                    \begin{equation*}
+                        3n^3 = (5n^2 - 2n^2)n = (2k - 2n^2)n = 2(k - n^2)n
+                    \end{equation*}
+                    よって$2 \mid 5n^2 \Rightarrow 2 \mid 3n^3$ \\
+                    すなわち$\{ n \in \Z \mid 5n^2は偶数 \} \subseteq \{ n \in \Z \mid 3n^3は偶数 \}$
+                \item $n \in (左) \Leftarrow n \in (左)$を示す．
+                    まず，$2 \mid 3n^3 \Rightarrow 2 \mid n$を証明する． \\
+                    $2 \mid 3n^3 \land 2 \nmid n$と仮定し，$n = 2k + 1$とすると
+                    \begin{equation*}
+                        3n^3 = 3(2k + 1)^3 = 2(12k^3 + 18k^2 + 9k + 1) + 1
+                    \end{equation*}
+                    これは$2 \mid 3n^3$に矛盾．よって$2 \mid 3n^3 \Rightarrow 2 \mid n$ \\
+                    次に，$2 \mid n \Rightarrow 2 \mid 5n^2$を証明する． \\
+                    $n = 2l$とおくと
+                    \begin{equation*}
+                        5n^2 = 5(2l)^2 = 2(10l^2)
+                    \end{equation*}
+                    よって$2 \mid n \Rightarrow 2 \mid 5n^2$．したがって，$2 \mid 3n^3 \Rightarrow 2 \mid 5n^2$ \\
+                    すなわち$\{ n \in \Z \mid 5n^2は偶数 \} \supseteq \{ n \in \Z \mid 3n^3は偶数 \}$
+            \end{itemize}
+            したがって，$\{ n \in \Z \mid 5n^2は偶数 \} = \{ n \in \Z \mid 3n^3は偶数 \}$
+        \end{proof}
+    \item $\{ (n,m) \mid n^2 = 2m^2 \} \subseteq \{ (n,m) \mid nとmは偶数 \}$
+        \begin{proof}
+            $A = \{ (n,m) \mid n^2 = 2m^2 \}, B = \{ (n,m) \mid nとmは偶数 \}$とする． \\
+            $(n,m) \in A \land (n,m) \notin B$を満たす$(n,m)$が存在すると仮定する． \\
+            $n^2 = 2m^2$より$2 \mid n^2$ \\
+            $2 \mid n^2 \Rightarrow 2 \mid n$(証明略)であるから，$2 \mid n$ \\
+            $n = 2k$とおいて
+            \begin{align*}
+                (2k)^2 &= 2m^2 \\
+                2k^2 &= m^2
+            \end{align*}
+            同様に$2 \mid m$が成り立ち，$n$と$m$が偶数であるから$(n,m) \in B$ \\
+            これは$(n,m) \notin B$と矛盾．
+        \end{proof}
+\end{enumerate}
+
+\section{集合$A, B, X$に対して以下の式を示せ．}
+\begin{equation*}
+    (A \cap (B \cup X)) \cup (B \cap X) = (A \cap B) \cup (B \cap X) \cup (X \cap A)
+\end{equation*}
+※記述がだいぶ怪しいです．出ないことを祈りましょう．
+\begin{proof}
+    $A \cap (B \cup X) = (A \cap B) \cup (X \cap A)$を示す．
+    \begin{itemize}
+        \item $A \cap (B \cup X) \subseteq (A \cap B) \cup (X \cap A)$ \\
+            $x \in A \cap (B \cup X)$とすると \\
+            積集合の定義より$x \in A$かつ$x \in B \cup X$ \\
+            和集合の定義より$x \in B$または$x \in X$であるから \\
+            $x \in A$かつ$x \in B$すなわち$x \in A \cap B$ \\
+            または$x \in A$かつ$x \in X$すなわち$x \in X \cap A$が成り立ち， \\
+            和集合の定義より$x \in (A \cap B) \cup (X \cap A)$となる．
+        \item $A \cap (B \cup X) \supseteq (A \cap B) \cup (X \cap A)$ \\
+            $x \in (A \cap B) \cup (X \cap A)$とすると \\
+            和集合の定義より$x \in A \cap B$または$x \in X \cap A$ \\
+            積集合の定義より$x \in A$かつ$x \in B$　または　$x \in A$かつ$x \in X$である． \\
+            したがって，$x \in A$かつ$x \in B \cup X$が成り立ち， \\
+            積集合の定義より$x \in A \cap (B \cup X)$となる．
+    \end{itemize}
+    これを用いて命題を証明する．
+    \begin{itemize}
+        \item $(A \cap (B \cup X)) \cup (B \cap X) \subseteq (A \cap B) \cup (B \cap X) \cup (X \cap A)$ \\
+            $x \in (A \cap (B \cup X)) \cup (B \cap X)$とすると \\
+            $x \in ((A \cap B) \cup (X \cap A)) \cup (B \cap X)$ \\
+            すなわち$x \in A \cap B$または$x \in B \cap X$または$x \in X \cap A$が成り立つ． \\
+            したがって，$x \in (A \cap B) \cup (B \cap X) \cup (X \cap A)$
+        \item $(A \cap (B \cup X)) \cup (B \cap X) \supseteq (A \cap B) \cup (B \cap X) \cup (X \cap A)$ \\
+            $x \in (A \cap B) \cup (B \cap X) \cup (X \cap A)$とすると \\
+            $x \in A \cap B$または$x \in B \cap X$または$x \in X \cap A$が成り立つ． \\
+            したがって，$x \in A \cap (B \cup X)$または$x \in B \cap X$ \\
+            すなわち$x \in (A \cap (B \cup X)) \cup (B \cap X)$が成り立つ．
+    \end{itemize}
+\end{proof}
+
+\section{$a,b \in \Z$とする．$a^2 + 2b^2 \equiv 0 \pmod 3$のとき$a$および$b$はともに3を法として0に合同であるか，3を法としてともに0に合同でないかのいずれかであることを証明せよ．}
+以下，合同式は全て3を法とするものとする．
+\begin{proof}
+    対偶は，「$(a \not\equiv 0 \land b \equiv 0) \lor (a \equiv 0 \land b \not\equiv 0) \Rightarrow a^2 + 2b^2 \not\equiv 0$」
+    \begin{enumerate}[(I)]
+        \item $a \not\equiv 0 \land b \equiv 0$のとき \\
+            $a = 3k + l(l = 1,2), b = 3m$とおくと
+            \begin{equation*}
+                a^2 + 2b^2 = (3k + l)^2 + 2(3m)^2 = 3(3k^2 + 2kl + 6m^2) + l^2
+            \end{equation*}
+            $1^2 \not\equiv 0 , 2^2 \not\equiv 0$であるから，$a^2 + 2b^2 \not\equiv 0$
+        \item $a \equiv 0 \land b \not\equiv 0$のとき \\
+            $a = 3m, b = 3k + l(l = 1,2)$とおくと
+            \begin{equation*}
+                a^2 + 2b^2 = (3m)^2 + 2(3k + l)^2 = 3(6k^2 + 4kl + 3m^2) + 2l^2
+            \end{equation*}
+            $2 \times 1^2 \not\equiv 0 , 2 \times 2^2 \not\equiv 0$であるから，$a^2 + 2b^2 \not\equiv 0$
+    \end{enumerate}
+\end{proof}
+
+\section{3つの整数$a, b, c$が$a^2 + b^2 = c^2$を満たすとき，$a, b, c$のうち少なくとも1つは偶数である．}
+\begin{proof}
+    対偶は「$2 \nmid a,b,c \Rightarrow a^2 + b^2 \neq c^2$」 \\
+    $a = 2k + 1, b = 2l + 1, c = 2m + 1$とおくと
+    \begin{align*}
+        a^2 + b^2 &= (2k + 1)^2 + (2l + 1)^2 \\
+                  &= 4k^2 + 4l^2 + 4k + 4l + 2 \\
+                  &= 2(2k^2 + 2l^2 + 2k + 2l + 1) \\
+        c^2 &= (2m + 1)^2 = 4m^2 + 4m + 1 = 2(2m^2 + 2m) + 1
+    \end{align*}
+    よって$a^2 + b^2$と$c^2$の偶奇が一致しないから$a^2 + b^2 \neq c^2$
+\end{proof}
+
+\end{document}

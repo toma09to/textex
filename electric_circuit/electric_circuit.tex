@@ -1,0 +1,128 @@
+\documentclass{ltjsreport}
+
+\usepackage{amsmath}
+\usepackage{siunitx}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{bm}
+
+\ctikzset{
+    straight voltages,
+    american currents,
+    european resistors,
+    american inductors
+}
+
+\newcounter{exercisecounter}[chapter]
+\newenvironment{exercise}[1]{
+    \refstepcounter{exercisecounter}
+    \par\vspace{2mm}\noindent\textbf{演習\theexercisecounter}. 
+}
+
+\title{電気回路}
+\author{toma09to}
+
+\begin{document}
+
+\chapter{電気回路とは}
+
+電気回路とは、電気を利用するために電源、負荷などの回路素子を導体で接続したものである。
+なお、「回路」の語義的には閉ループを指すが、アンテナなどの閉ループとなっていないものも慣例的に含めることがある。
+
+\begin{figure}[htbp]
+    \centering
+    \begin{circuitikz}
+        \draw (0,0) to[battery1,invert,v=$E$] (0,4) -- (2,4)
+        to[R=$R$] (2,2)
+        to[leDo] (2,0) -- (0,0);
+    \end{circuitikz}
+    \caption{電気回路の例}
+    \label{電気回路の例}
+\end{figure}
+
+本書においては、このうち抵抗器・インダクタ・キャパシタ・電圧源・電流源のみを用いた回路（\emph{線形回路}）を扱う。
+線形回路の振る舞いは線形微分方程式で記述できる。
+
+\chapter{基本的な物理量}
+
+\section{電流}
+
+導体中で電気を帯びた粒子（\emph{電荷}）の集団が、連続的に移動する現象を\emph{電流}という。
+導体のある断面における電流の大きさ$I$[\si{\A}]は、微小時間$dt$[\si{\s}]の間にその断面を通過した電荷の量が$dQ$[\si{\C}]であるとき、
+\begin{equation}
+    I = \frac{dQ}{dt}
+\end{equation}
+で表せる。
+
+\begin{exercise}
+    ?導線のある断面において\SI{8.0}{\s}間に\SI{20}{\C}の電荷が通過したとき、この断面の電流の大きさ$I$[\si{\A}]を求めよ。
+    ただし、通過する電荷の量は常に一定であったとする。
+\end{exercise}
+\begin{exercise}
+    ?$t$[\si{\s}]における電流の大きさが$2t$[\si{\A}]であったとき、\SI{0}{\s}から\SI{2.0}{\s}の間に導体の断面を通過した電荷の量$Q$[\si{\C}]を求めよ。
+\end{exercise}
+
+\section{電圧}
+
+質点が万有引力を持つように、電荷はクーロン力を持つ。
+ゆえに、電荷についても位置エネルギーを定義することができる。
+これを\emph{電位}という。
+そして、ある2点間の電位の差を\emph{電圧}（あるいは電位差）という。
+
+ここで、電圧の大きさ$V$[\si{\V}]は、微小な電荷量$dQ$[\si{\C}]と、それがその電圧によってなされた仕事$dW$[\si{\J}]を用いて、
+\begin{equation}
+    V = \frac{dW}{dQ}
+\end{equation}
+と表せる。
+
+なお、電流を生じさせる電圧を\emph{起電力}とよぶ。
+
+\section{電力}
+
+\emph{電力}とは、単位時間あたりに消費される電気エネルギーのことである。
+エネルギーを消費する回路素子のことを、負荷と呼ぶ。
+ある負荷の両端にかかる電圧を$V$[\si{\V}]、流れる電流を$I$[\si{\A}]とし、この負荷における電力を求めよう。
+
+負荷において、微小時間$dt$[\si{s}]の間に消費されるエネルギーを$dW$[\si{J}]とすると電力$P$[\si{\W}]は、
+\begin{equation}
+    P = \frac{dW}{dt}
+\end{equation}
+となる。微分において連鎖律が成り立つから、以下のように変形できる。
+\begin{equation}
+    \frac{dW}{dt} = \frac{dQ}{dt}\frac{dW}{dQ} = VI
+\end{equation}
+したがって、電力は電圧と電流の積で表せる。
+
+\section{電力量}
+
+\emph{電力量}は、ある時間の間で消費されたエネルギーの合計のことである。
+電力を$P$[\si{\W}]として、$t_1$[\si{\s}]から$t_2$[\si{\s}]の間に消費されたエネルギーすなわち電力量を$W$[\si{\W\s}]とすると、
+\begin{equation}
+    W = \int_{t_1}^{t_2} P dt
+\end{equation}
+となる。
+
+電力量は仕事の一種であるから、単位は\si{\J}であるが、電力の単位が\si{\W}であるため\si{\W\s}が単位として用いられることが多い（\si{\J}と\si{\W\s}は等価）。
+
+\chapter{回路素子の特性}
+
+\section{抵抗器}
+
+抵抗器における電流の流れにくさを、\emph{電気抵抗}といい、抵抗器の両端の電圧が$V$[\si{\V}]、流れる電流が$I$[\si{\A}]、電気抵抗が$R$[\si{\ohm}]のとき以下の法則が成り立つ。
+\begin{equation}
+    V = RI
+\end{equation}
+これを\emph{オームの法則}という。
+
+また、電気抵抗の逆数$G (= R^{-1})$[\si{\siemens}]を\emph{コンダクタンス}といい、オームの法則より以下が成り立つ。
+\begin{equation}
+    I = GV
+\end{equation}
+
+抵抗器は電力を消費し、大抵の場合は熱エネルギーとして放出する。
+
+\section{インダクタ}
+
+インダクタとは、流れる電流によって形成される磁場にエネルギーを蓄えることができる回路素子のことである。
+
+\end{document}

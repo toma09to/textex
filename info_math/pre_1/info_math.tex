@@ -1,0 +1,362 @@
+\documentclass[a4paper,12pt]{ltjsarticle}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{mathtools}
+
+\title{情報数学演習問題解説}
+\author{toma09to}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{}
+定義と記号を書けば良い．
+\begin{enumerate}[(1)]
+    \item $\forall a \in A ; a \in B$、$A \subseteq B$
+    \item $\{ x \mid x \in A \lor x \in B \}$、$A \cup B$
+    \item $\{ x \mid x \in A \land x \notin B \}$、$A - B$
+    \item $\{ x \mid x \in A \land x \in B \}$、$A \cap B$
+\end{enumerate}
+
+\section{}
+\begin{align*}
+    (A \times B) - (B \times A) &= \{ (1,1), (1,2), (2,1), (2,2), (3,1), (3,2) \} \\
+                                &\quad - \{ (1,1), (1,2), (1,3), (2,1), (2,2), (2,3) \} \\
+                                &= \{ (3,1), (3,2) \}
+\end{align*}
+
+\section{}
+\begin{enumerate}[(1)]
+    \item 与えられた命題は$\exists x \in \mathbb{R} ; x^2 = 3$であるから、その否定は$\forall x \in \mathbb{R} ; x^2 \neq 3$である．
+    \item 与えられた命題は$\forall x \in \mathbb{R} ; x^2 \geq 0$であるから、その否定は$\exists x \in \mathbb{R} ; x^2 < 0$である．($\ngeq \Leftrightarrow <$)
+    \item 与えられた命題は$\forall x \in \mathbb{R} ; \exists y \in \mathbb{R} ; x < y$であるから、その否定は$\exists x \in \mathbb{R} ; \forall y \in \mathbb{R} ; x \geq y$である．($\nless \Leftrightarrow \geq$)
+\end{enumerate}
+
+\section{}
+順番に真理値表を作成すればよい．
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{ c|c|c|c|c }
+        $P$ & $Q$ & $〜 P$ & $Q \Rightarrow 〜 P$ & $P \land (Q \Rightarrow 〜 P)$ \\
+        \hline
+        $T$ & $T$ & $F$ & $F$ & $F$ \\
+        $T$ & $F$ & $F$ & $T$ & $T$ \\
+        $F$ & $T$ & $T$ & $T$ & $F$ \\
+        $F$ & $F$ & $T$ & $T$ & $F$
+    \end{tabular}
+\end{table}
+
+\section{}
+\begin{enumerate}[(a)]
+    \item (a)の否定は、$\exists r \in \mathbb{Q} ; \frac{1}{r} \notin \mathbb{Q}$である．各選択肢を記号で表すと、
+        \begin{enumerate}[(1)]
+            \item $\forall r \in \mathbb{R} - \mathbb{Q} ; \frac{1}{r} \notin \mathbb{Q}$
+            \item $\forall r \in \mathbb{Q} ; \frac{1}{r} \in \mathbb{R} - \mathbb{Q}$
+            \item $\forall r \in \mathbb{Q} ; \frac{1}{r} \notin \mathbb{R} - \mathbb{Q}$
+            \item $\exists r \in \mathbb{Q} ; \frac{1}{r} \notin \mathbb{Q}$
+            \item $\exists r \in \mathbb{Q} ; \frac{1}{r} \notin \mathbb{R} - \mathbb{Q}$
+            \item $\exists r \in \mathbb{Q} ; \frac{1}{r} \notin \mathbb{R} - \mathbb{Q}$
+        \end{enumerate}
+        このうち、一致するものは(4)のみである(無理数全体の集合を$\mathbb{R} - \mathbb{Q}$と表した)．
+    \item (b)の否定は、$\forall A ; \bar{A} \nsubseteq A$である．各選択肢を記号で表すと、
+        \begin{enumerate}
+            \item[(7)] $\exists A ; \bar{A} \supseteq A$
+            \item[(8)] $\exists A ; \bar{A} \nsubseteq A$
+            \item[(9)] $\forall A ; \bar{A} \subseteq A$
+            \item[(10)] $\forall A ; \bar{A} \subseteq A$
+            \item[(11)] $\forall A ; \bar{A} \nsubseteq A$
+            \item[(12)] $\forall A ; \bar{A} \nsubseteq A$
+            \item[(13)] $\forall A ; \bar{A} \supseteq A$
+            \item[(14)] $\forall A ; \bar{A} \nsupseteq A$
+        \end{enumerate}
+        このうち、一致するものは(11)と(12)である．
+\end{enumerate}
+
+\section{}
+\begin{enumerate}[(1)]
+    \item 温泉地であって($A$)、紅葉が見られるか湖があり($B \lor C$)、海辺でなければよいから($〜D$)、$A \land (B \lor C) \land (〜D)$
+    \item $A$が真であるのは、候補地1,2,3,4．そのうち、$D$が偽であるのは、候補地1,3．どちらも$B$か$C$のいずれかが真であるから、候補地1,3．
+\end{enumerate}
+
+\section{}
+真理値表を書いて、真理値が一致するか調べる．
+\begin{enumerate}[(1)]
+    \item $A : 補講を受ける$, $B : 単位がもらえる$とすると、「補講を受けなければ単位は出ない」は$(〜A) \Rightarrow (〜B)$、「補講を受けたので、単位がもらえる」は$A \Rightarrow B$
+
+        \begin{table}[htbp]
+            \centering
+            \begin{tabular}{ c|c|c|c }
+                $A$ & $B$ & $(〜A) \Rightarrow (〜B)$ & $A \Rightarrow B$ \\
+                \hline
+                $T$ & $T$ & $T$ & $T$ \\
+                $T$ & $F$ & $T$ & $F$ \\
+                $F$ & $T$ & $F$ & $T$ \\
+                $F$ & $F$ & $T$ & $T$
+            \end{tabular}
+        \end{table}
+        よって、真理値が一致しないので主張は正しくない．
+    \item $A : 朝5時を過ぎる$, $B : 日が昇っている$とすると、「朝5時を過ぎれば日が昇っている」は$A \Rightarrow B$、「今はまだ、5時を過ぎていないので、日は昇っていない」は$(〜A) \Rightarrow (〜B)$
+
+        上の真理値表より主張は正しくない．
+    \item $A : 外が晴れる$, $B : あの人がここに来る$とすると、「晴れれば、必ずここに来てくれる」は$A \Rightarrow B$、「あの人がここに来ないということは、外は晴れていない」は$(〜B) \Rightarrow (〜A)$
+
+        \begin{table}[htbp]
+            \centering
+            \begin{tabular}{ c|c|c|c }
+                $A$ & $B$ & $A \Rightarrow B$ & $(〜B) \Rightarrow (〜A)$ \\
+                \hline
+                $T$ & $T$ & $T$ & $T$ \\
+                $T$ & $F$ & $F$ & $F$ \\
+                $F$ & $T$ & $T$ & $T$ \\
+                $F$ & $F$ & $T$ & $T$
+            \end{tabular}
+        \end{table}
+        よって、真理値が一致するので主張は正しい．
+\end{enumerate}
+
+\section{}
+\begin{enumerate}[(1)]
+    \item $\{ 2, -2 \}$ \quad $n^2 = 4$の解は$n = \pm 2$
+    \item $\{ -20, -18, -16, -14, -12, -10, -8, -6, -4, -2, 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20 \}$ \quad $n^2は偶数 \Leftrightarrow nは偶数$
+    \item 上と同じ．\quad $n^4は偶数 \Leftrightarrow nは偶数$
+    \item 要素はない．\quad (2)に同じ．
+    \item $\{ 2, 3 \}$ \quad $n^2 - 5n + 6 = 0$の解は$n = 2, 3$
+    \item 要素はない．\quad 偶数かつ奇数な整数は存在しない．
+\end{enumerate}
+
+\section{}
+\begin{enumerate}[(1)]
+    \item
+        \begin{proof}[直接証明]
+            $5n = 3k$とおくと、
+            \begin{align*}
+                n &= 6n - 5n \\
+                  &= 6n - 3k \\
+                  &= 3(2n - k)
+            \end{align*}
+        \end{proof}
+        \begin{proof}[対偶法]
+            対偶は、「$n$が3の倍数でないならば、$5n$は3の倍数でない」
+            \begin{enumerate}[(i)]
+                \item $n \equiv 1 \pmod 3$のとき \\
+                    $n = 3k + 1 (k \in \mathbb{Z})$として、
+                    \begin{equation*}
+                        5n = 15k + 5 = 3(5k + 1) + 2
+                    \end{equation*}
+                \item $n \equiv 2 \pmod 3$のとき \\
+                    $n = 3k + 2 (k \in \mathbb{Z})$として、
+                    \begin{equation*}
+                        5n = 15k + 10 = 3(5k + 3) + 1
+                    \end{equation*}
+            \end{enumerate}
+        \end{proof}
+        \begin{proof}[背理法]
+            $5n$が3の倍数かつ、$n$は3の倍数でないと仮定する．
+            \begin{enumerate}[(i)]
+                \item $n \equiv 1 \pmod 3$のとき \\
+                    $n = 3k + 1 (k \in \mathbb{Z})$として、
+                    \begin{equation*}
+                        5n = 15k + 5 = 3(5k + 1) + 2
+                    \end{equation*}
+                \item $n \equiv 2 \pmod 3$のとき \\
+                    $n = 3k + 2 (k \in \mathbb{Z})$として、
+                    \begin{equation*}
+                        5n = 15k + 10 = 3(5k + 3) + 1
+                    \end{equation*}
+            \end{enumerate}
+            これは、$5n$が3の倍数であることと矛盾．
+        \end{proof}
+    \item
+        \begin{proof}[直接証明]
+            $ab = 3l$とおく．
+            \begin{enumerate}[(i)]
+                \item $a = 3k + 1$のとき \\
+                    \begin{align*}
+                        b &= (1 - a)b + ab \\
+                          &= -3kb + 3l \\
+                          &= 3(l - kb)
+                    \end{align*}
+                \item $a = 3k + 2$のとき \\
+                    \begin{align*}
+                        b &= (a + 1)b - ab \\
+                          &= 3(k + 1)b - 3l \\
+                          &= 3(k - l + 1)
+                    \end{align*}
+            \end{enumerate}
+        \end{proof}
+        \begin{proof}[対偶法]
+            対偶は、「$b$が3の倍数でないならば、$ab$が3の倍数でないまたは$a$が3の倍数」
+            \begin{enumerate}[(i)]
+                \item $b \equiv 1 \pmod 3$のとき \\
+                    $b = 3k + 1 (k \in \mathbb{Z})$として、
+                    \begin{equation*}
+                        ab = a(3k + 1) = 3ak + a
+                    \end{equation*}
+                    $ab$が3の倍数なのは、$a$が3の倍数であるとき．$a$が3の倍数でないとき、$ab$は3の倍数でない．
+                \item $b \equiv 2 \pmod 3$のとき \\
+                    $b = 3k + 2 (k \in \mathbb{Z})$として、
+                    \begin{equation*}
+                        ab = a(3k + 2) = 3ak + 2a
+                    \end{equation*}
+                    同様に、$ab$が3の倍数でないまたは、$a$が3の倍数．
+            \end{enumerate}
+        \end{proof}
+        \begin{proof}[背理法]
+            $ab$が3の倍数かつ、$a$も$b$も3の倍数でないと仮定する．
+            \begin{enumerate}
+                \item $a \equiv 1 \pmod 3$, $b \equiv 1 \pmod 3$のとき
+                    \begin{equation*}
+                        ab = (3k + 1)(3l + 1) = 9kl + 3k + 3l + 1 = 3(3kl + k + l) + 1
+                    \end{equation*}
+                \item $a \equiv 1 \pmod 3$, $b \equiv 2 \pmod 3$のとき
+                    \begin{equation*}
+                        ab = (3k + 1)(3l + 2) = 9kl + 6k + 3l + 2 = 3(3kl + 2k + l) + 2
+                    \end{equation*}
+                \item $a \equiv 2 \pmod 3$, $b \equiv 1 \pmod 3$のとき
+                    \begin{equation*}
+                        ab = (3k + 2)(3l + 1) = 9kl + 3k + 6l + 2 = 3(3kl + k + 2l) + 2
+                    \end{equation*}
+                \item $a \equiv 2 \pmod 3$, $b \equiv 2 \pmod 3$のとき
+                    \begin{equation*}
+                        ab = (3k + 2)(3l + 2) = 9kl + 6k + 6l + 4 = 3(3kl + 2k + 2l + 1) + 1
+                    \end{equation*}
+            \end{enumerate}
+            これは、$ab$が3の倍数であることと矛盾．
+        \end{proof}
+\end{enumerate}
+
+\section{}
+以下、$k,l \in \mathbb{Z}$とする．
+\begin{enumerate}[(1)]
+    \item $2 \nmid n \Rightarrow 2 \mid (n + 1)$
+        \begin{proof}
+            \begin{align*}
+                n &= 2k + 1 \\
+                n + 1 &= 2k + 2 \\
+                &= 2(k + 1)
+            \end{align*}
+        \end{proof}
+    \item $2 \nmid n \Rightarrow 2 \mid (9n + 5)$
+        \begin{proof}
+            \begin{align*}
+                n &= 2k + 1 \\
+                9n + 5 &= 18k + 14 \\
+                &= 2(9k + 7)
+            \end{align*}
+        \end{proof}
+    \item $2 \nmid n \Rightarrow 2 \nmid n^2$
+        \begin{proof}
+            \begin{align*}
+                n &= 2k + 1 \\
+                n^2 &= (2k + 1)^2 \\
+                &= 4k^2 + 4k + 1 \\
+                &= 2(2k^2 + 2k) + 1
+            \end{align*}
+        \end{proof}
+    \item $2 \mid (7n + 4) \Rightarrow 2 \nmid (3n - 11)$
+        \begin{proof}
+            \begin{align*}
+                7n + 4 &= 2k \\
+                3n - 11 &= 2k - 4n - 15 \\
+                &= 2(k - 2n - 8) + 1
+            \end{align*}
+        \end{proof}
+    \item $2 \mid 5n^2 \Rightarrow 2 \mid 3n^3$
+        \begin{proof}
+            \begin{align*}
+                5n^2 &= 2k \\
+                3n^3 &= 2kn - 2n^3 \\
+                &= 2(kn - n^3)
+            \end{align*}
+        \end{proof}
+    \item[(6-1)] $2 \mid n \Rightarrow 2 \mid (3n^2 + n)$
+        \begin{proof}
+            \begin{align*}
+                n &= 2k \\
+                3n^2 + n &= 3(2k)^2 + (2k) \\
+                &= 12k^2 + 2k \\
+                &= 2(6k^2 + k)
+            \end{align*}
+        \end{proof}
+    \item[(6-2)] $2 \nmid n \Rightarrow 2 \mid (3n^2 + n)$
+        \begin{proof}
+            \begin{align*}
+                n &= 2k + 1 \\
+                3n^2 + n &= 3(2k + 1)^2 + (2k + 1) \\
+                &= 12k^2 + 14k + 4 \\
+                &= 2(6k^2 + 7k + 2)
+            \end{align*}
+        \end{proof}
+    \item[(6-3)] $2 \nmid n \Rightarrow 8 \mid (n^2 - 1)$
+        \begin{proof}
+            \begin{align*}
+                n &= 2k + 1 \\
+                n^2 - 1 &= 4k^2 + 4k \\
+                &= 4(k^2 + k)
+            \end{align*}
+            $2 \mid (k^2 + k)$を証明すればよい．
+            \begin{enumerate}[(i)]
+                \item $k = 2l$のとき
+                    \begin{equation*}
+                        k^2 + k = 4l^2 + 2l = 2(2l^2 + l)
+                    \end{equation*}
+                \item $k = 2l + 1$のとき
+                    \begin{equation*}
+                        k^2 + k = 4l^2 + 6l + 2 = 2(2l^2 + 3l + 1)
+                    \end{equation*}
+            \end{enumerate}
+        \end{proof}
+    \item[(6-4)] $(2 \nmid n \land n \equiv 1 \pmod 3) \Rightarrow 24 \mid (n^2 - 1)$
+        \begin{proof}
+            $n = 3k + 1$とおくと、
+            \begin{equation*}
+                n^2 - 1 = 9k^2 + 6k = 3(3k^2 + 2k)
+            \end{equation*}
+            より$3 \mid (n^2 - 1)$ \\
+            $2 \nmid n$であるから、(6-3)より$8 \mid (n^2 - 1)$ \\
+            よって、$24 \mid (n^2 - 1)$
+        \end{proof}
+    \item[(6-5)] $2 \nmid n \Rightarrow 120 \mid (n^5 - n)$
+        \begin{proof}
+            $n = 2k + 1$とすると、
+            \begin{align*}
+                n^5 - n &= n(n^4 - 1) = n(n^2 - 1)(n^2 + 1) = n(n - 1)(n + 1)(n^2 + 1) \\
+                &= 2k(2k + 1)(2k + 2)(4k^2 + 4k + 2) \\
+                &= 8k(2k + 1)(k + 1)(2k^2 + 2k + 1)
+            \end{align*}
+            よって、$8 \mid (n^5 - n)$ \\
+            また、$(n - 1)n(n + 1)$は連続する3整数の積だから、$3 \mid (n^5 - n)$ \\
+            以上より、$24 \mid (n^5 - n)$だから、$5 \mid (n^5 - n)$を示せばよい．
+            \begin{enumerate}[(i)]
+                \item $n = 5l$のとき
+                    \begin{equation*}
+                        n^5 - n = n(n^4 - 1) = 5l(n^4 - 1)
+                    \end{equation*}
+                \item $n = 5l + 1$のとき
+                    \begin{equation*}
+                        n^5 - n = (n - 1)(n^4 + n^3 + n^2 + n) = 5l(n^4 + n^3 + n^2 + n)
+                    \end{equation*}
+                \item $n = 5l + 2$のとき
+                    \begin{equation*}
+                        n^5 - n = (n^2 + 1)(n^3 - n) = (25l^2 + 20l + 5)(n^3 - n) = 5(5l^2 + 4l + 1)(n^3 - n)
+                    \end{equation*}
+                \item $n = 5l + 3$のとき
+                    \begin{equation*}
+                        n^5 - n = (n^2 + 1)(n^3 - n) = (25l^2 + 30l + 10)(n^3 - n) = 5(5l^2 + 6l + 2)(n^3 - n)
+                    \end{equation*}
+                \item $n = 5l + 4$のとき
+                    \begin{equation*}
+                        n^5 - n = (n + 1)(n^4 - n^3 + n^2 - n) = 5(l + 1)(n^4 - n^3 + n^2 - n)
+                    \end{equation*}
+            \end{enumerate}
+            よって、$5 \mid (n^5 - n)$であるから$2 \nmid n \Rightarrow 120 \mid (n^5 - n)$
+        \end{proof}
+\end{enumerate}
+もちろん、これ以外にも証明の方法はある．
+
+\end{document}
